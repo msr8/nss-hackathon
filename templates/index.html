@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <script src="{{url_for('static', filename='login.js')}}"></script>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form  onsubmit="return false">
+        <label>Title:  <input type="text" id="title_input"  required></label><br>
+        <label>Amount: <input type="text" id="amount_input" required></label><br>
+        <label>Type:   </label>
+        <select id="type_input">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+        <input type="submit" value="Login">
+    </form>
+
+</body>
+
+</html>

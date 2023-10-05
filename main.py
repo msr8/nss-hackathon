@@ -8,6 +8,7 @@ import bcrypt
 import json
 import os
 from typing import Any
+from time import time
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'DATA')
 USERS_FP = os.path.join(DATA_DIR, 'users.json')
@@ -89,7 +90,7 @@ class ApiSignup(Resource):
         # Make an empty JSON file for the user
         user_json_fp = os.path.join(DATA_DIR, f'{username}.json')
         with open(user_json_fp, 'w') as f:
-            json.dump({}, f)
+            json.dump([], f)
 
         # Store username in session
         session['username'] = username
@@ -144,6 +145,39 @@ def page_logout() -> Response:
 
 
 
+
+
+
+
+
+# Addlog route
+class ApiAddLog(Resource):
+    def post(self) -> dict[str, Any]:
+        # Get username, type of transaction, amount of transaction, and title of transaction given to us via POST request
+        username = session['username']
+        type_    = request.form['type'] # 'income' or 'expense'
+        amount   = request.form['amount']
+        title    = request.form['title']
+
+        # Save it locally
+        new_log = {
+            'amount':    amount,
+            'type':      type_,
+            'title':     title,
+            'timestamp': time()
+        }
+        user_json_fp = os.path.join(DATA_DIR, f'{username}.json')
+        with open(user_json_fp, 'r') as f:
+            user_data = json.load(f)
+        user_data.append(new_log)
+        with open(user_json_fp, 'w') as f:
+            json.dump(user_data, f)
+
+
+
+
+
+
 # Profile route
 @app.route('/')
 def page_root() -> str | Response:
@@ -153,6 +187,12 @@ def page_root() -> str | Response:
     else:
         return redirect(url_for('page_login'))
         # return f'Logged in as {session.items()}'
+
+
+
+
+
+
 
 
 
