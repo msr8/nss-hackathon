@@ -6,7 +6,10 @@
 </head>
 
 <body>
-    <h1>Login</h1>
+    Username: <span id="username">{{session['username']}}</span>
+    
+    <br>
+    
     <form  onsubmit="return false">
         <label>Title:  <input type="text" id="title_input"  required></label><br>
         <label>Amount: <input type="text" id="amount_input" required></label><br>
@@ -14,9 +17,30 @@
         <select id="type_input">
             <option value="income">Income</option>
             <option value="expense">Expense</option>
-        </select>
-        <input type="submit" value="Login">
+        </select><br>
+        <input type="submit" value="Add">
     </form>
+
+    <br>
+
+    <table id="log-table">
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>100</td>
+            <td>Income</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <div id="graphs">
+
+    </div>
 
 </body>
 

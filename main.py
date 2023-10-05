@@ -183,7 +183,7 @@ class ApiAddLog(Resource):
 def page_root() -> str | Response:
     # Check if user is logged in
     if 'username' in session:
-        return f'Logged in as {session.items()}'
+        return render_template('index.html')
     else:
         return redirect(url_for('page_login'))
         # return f'Logged in as {session.items()}'
