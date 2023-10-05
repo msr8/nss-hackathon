@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <script src="{{url_for('static', filename='signup.js')}}"></script>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form onsubmit="signup();return false">
+        <label>Username: <input type="text"     id="username_input" required></label><br>
+        <label>Password: <input type="password" id="password_input" required></label><br>
+        <input type="submit" value="Sign Up">
+    </form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <script src="{{url_for('static', filename='login.js')}}"></script>
+</head>
+<body>
+    <h1>Login</h1>
+    <form  onsubmit="login();return false">
+        <label>Username: <input type="text"     id="username_input" required></label><br>
+        <label>Password: <input type="password" id="password_input" required></label><br>
+        <input type="submit" value="Login">
+    </form>
+
+    <a href="{{url_for('page_signup')}}">Don't have an account? Sign up now!</a>
+</body>
+</html>
